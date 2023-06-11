@@ -26,3 +26,7 @@ app.listen(port,()=>{
 app.post('/uploadfile', upload.single('filetoupload'), function (req, res, next) {  
     res.status(200).send({'message' : "file uploaded"});
   })
+
+app.get("/uploadfile",(req,res)=>{
+    res.send("it's working")
+})
