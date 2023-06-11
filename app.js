@@ -20,6 +20,8 @@ app.listen(port,()=>{
     console.log("Server started on port :"+port)
 });
 
+app.use(express.static("../client"));
+
 
 // to use this API the user need to upload a single file using field name "filetoupload" when sending the POST request 
 //and must send a JSON with "description" filed
@@ -28,5 +30,5 @@ app.post('/uploadfile', upload.single('filetoupload'), function (req, res, next)
   })
 
 app.get("/uploadfile",(req,res)=>{
-    res.render("../client/src/main.jsx")
+    res.sendFile(__dirname,"../client","/src/main.jsx")
 })
