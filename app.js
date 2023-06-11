@@ -28,5 +28,5 @@ app.post('/uploadfile', upload.single('filetoupload'), function (req, res, next)
   })
 
 app.get("/uploadfile",(req,res)=>{
-    res.send("it's working")
+    res.render("../client/src/main.jsx")
 })
