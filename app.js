@@ -30,5 +30,5 @@ app.post('/uploadfile', upload.single('filetoupload'), function (req, res, next)
   })
 
 app.get("/uploadfile",(req,res)=>{
-    res.send({message : "Server hai ji"})
+    res.json({message : "Server hai ji"})
 })
