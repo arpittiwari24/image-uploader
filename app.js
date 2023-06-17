@@ -1,34 +1,18 @@
-import express from "express"
-import multer from "multer";
+import express from 'express'
+const app = express()
+const port = 5000
+import  cors from  'cors'
 
-// set up multer
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'uploadedFiles/')
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.originalname)
-    }
+app.use(cors())
+
+app.post('/image', function (req, res) {
+  res.json({})
 })
-//create multer instance
-var upload = multer({ storage: storage })
 
-// create app 
-const port = 3000;
-const app = express();
-app.listen(port,()=>{
-    console.log("Server started on port :"+port)
-});
+app.get('/',function (req,res) {
+  res.send("<h1>Yaha kya karne aya hai, main site pe ja </h1>")
+})
 
-
-
-
-// to use this API the user need to upload a single file using field name "filetoupload" when sending the POST request 
-//and must send a JSON with "description" filed
-app.post('/uploadfile', upload.single('filetoupload'), function (req, res, next) {  
-    res.status(200).send({'message' : "file uploaded"});
-  })
-
-app.get("/uploadfile",(req,res)=>{
-    res.json({message : "Server hai ji"})
+app.listen(port, () => {
+  console.log(`listening at http://localhost:${port}`)
 })
